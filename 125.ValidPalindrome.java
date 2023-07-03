@@ -8,10 +8,9 @@ class Solution {
                 p = p + ch;
         }
         for (int i = 0; i < p.length() / 2; i++) {
-            if (p.charAt(i) != p.charAt(l - 1 - i))
+            if (p.charAt(i) != p.charAt(p.length() - 1 - i))
                 return false;
         }
         return true;
     }
 }
-
