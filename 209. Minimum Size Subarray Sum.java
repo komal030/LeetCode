@@ -3,7 +3,7 @@ class Solution {
         int n = nums.length;
         int curr = 0;
         int l = 0, r;
-        int window = 1000;
+        int window = Integer.MAX_VALUE;
         for (r = 0; r < n; r++) {
             curr += nums[r];
             while (curr >= target) {
@@ -12,7 +12,7 @@ class Solution {
                 l++;
             }
         }
-        if (window < 1000)
+        if (window < Integer.MAX_VALUE)
             return window;
         else return 0;
     }
