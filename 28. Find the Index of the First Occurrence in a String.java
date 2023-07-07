@@ -17,7 +17,7 @@ class Solution {
                 return ch;
             else {
                 j = 0;
-                i++;
+                ich+1;
             }
         }
         return -1;
