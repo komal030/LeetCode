@@ -13,7 +13,7 @@ class Solution {
             }
         }
          if(dp[0]==0)
-         return flase;
+         return false;
          else
          return true;
     }
