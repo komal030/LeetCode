@@ -15,24 +15,32 @@
  */
 class Solution {
 
-     private int xDepth, yDepth;
-    private TreeNode xParent, yParent;
-    private void dfs(TreeNode node, TreeNode parent, int x, int y, int depth) {
-        if (node == null || (xParent != null && yParent != null)) return;
-
-        if (node.val == x) {
-            xDepth = depth;
-            xParent = parent;
-        } else if (node.val == y) {
-            yDepth = depth;
-            yParent = parent;
+    int height1,height2;
+    TreeNode parent1,parent2;
+    void dfs(TreeNode root,TreeNode par, int x,int y,int depth)
+    {
+        if(root==null)
+        return;
+        if(root.val==x)
+        {
+            height1=depth;
+            parent1=par;
         }
+          if(root.val==y)
+        {
+            height2=depth;
+            parent2=par;
+        }
+        dfs(root.left,root,x,y,depth+1);
+        dfs(root.right,root,x,y,depth+1);
 
-        dfs(node.left, node, x, y, depth + 1);
-        dfs(node.right, node, x, y, depth + 1);
     }
-    public boolean isCousins(TreeNode node, int x, int y) {
-      dfs(node, null, x, y, 0);
-        return xDepth == yDepth && xParent != yParent;
+
+    public boolean isCousins(TreeNode root, int x, int y) {
+     dfs(root,null,x,y,0);
+     if(parent1!=parent2 &&height1==height2) 
+     return true;
+     else
+     return false;  
     }
 }
