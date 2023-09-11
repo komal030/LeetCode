@@ -19,11 +19,7 @@ class Solution {
       Stack < Integer > arr2 = new Stack < > ();
       trav(root1, arr1);
       trav(root2, arr2);
-      while (!arr1.isEmpty() && !arr2.isEmpty()) {
-         if (arr1.pop() != arr2.pop())
-            return false;
-      }
-        return arr1.isEmpty() && arr2.isEmpty();
+      return arr1.equals(arr2);
             
    }
 
