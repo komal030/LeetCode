@@ -1,19 +1,13 @@
-class Solution {
-    public boolean isBalanced(TreeNode root) {        
-        if(add(root)==-1)
-        return false;
-        else
+ class Solution {
+    public boolean isBalanced(TreeNode root) {
+        if(root == null) 
         return true;
+        return ((Math.abs(checkH(root.left)-checkH(root.right)))<=1) && isBalanced(root.left) && isBalanced(root.right);
     }
-
-    public int add(TreeNode root)
+    public int checkH(TreeNode root)
     {
         if(root==null)
         return 0;
-        int left=add(root.left);
-        int right=add(root.right);
-        if(Math.abs(left-right)>1)
-        return -1;
-        return 1+Math.max(add(root.left),add(root.right));
+        return 1+Math.max(checkH(root.left),checkH(root.right));
     }
-}
+ }
