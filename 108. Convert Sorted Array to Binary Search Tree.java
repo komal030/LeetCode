@@ -1,24 +1,16 @@
 class Solution {
-   public TreeNode sortedArrayToBST(int[] nums) {
-      int n = nums.length;
-      int mid = n / 2;
-      TreeNode node = new TreeNode(nums[mid]);
-      make(node, nums, 0, mid - 1);
-      make(node, nums, mid + 1, n-1);
-      return node;
-   }
-
-   public void make(TreeNode node, int arr[], int l, int r) {
-      if (l > r || node == null)
-         return;
-      int mid = (l + r + 1) / 2;
-      TreeNode temp = new TreeNode(arr[mid]);
-      if (arr[mid] > node.val)
-         node.right = temp;
-      else
-         node.left = temp;
-      make(temp, arr, l, mid - 1);
-      make(temp, arr, mid + 1, r);
-
-   }
+    public TreeNode sortedArrayToBST(int[] nums) {
+        int n=nums.length;
+      return makeTree(nums,0,n-1);
+    }
+    public TreeNode makeTree(int nums[],int l,int r)
+    {
+       if(l>r)
+       return null;
+       int mid=(l+r)/2;
+       TreeNode t=new TreeNode(nums[mid]);
+       t.left=makeTree(nums,l,mid-1);
+       t.right=makeTree(nums,mid+1,r);
+      return t;
+    }
 }
